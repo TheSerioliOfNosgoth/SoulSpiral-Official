@@ -82,6 +82,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
 
         protected BF.FlatFileHashLookupTable hltBO1;
         protected BF.FlatFileHashLookupTable hltSR1;
+        protected BF.FlatFileHashLookupTable hltSR2AirForge;
         protected BF.FlatFileHashLookupTable hltSR2;
         protected BF.FlatFileHashLookupTable hltDefiance;
 
@@ -330,6 +331,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
 
             hltBO1 = new FlatFileHashLookupTable("BO1", dllPath + "Hashes-BO1.txt");
             hltSR1 = new FlatFileHashLookupTable("SR1", dllPath + "Hashes-SR1.txt");
+            hltSR2AirForge = new FlatFileHashLookupTable("SR2AirForge", dllPath + "Hashes-SR2_Air_Forge.txt");
             hltSR2 = new FlatFileHashLookupTable("SR2", dllPath + "Hashes-SR2.txt");
             hltDefiance = new FlatFileHashLookupTable("Defiance", dllPath + "Hashes-Defiance.txt");
         }
@@ -534,9 +536,17 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             bft900.Name = "Type 900";
             bft900.Description = "Soul Reaver 2 Air Forge Demo (Playstation 2)";
             bft900.MasterIndexType = BF.Index.INDEX_TYPE_SI450;
+            bft900.HashLookupTable = hltSR2AirForge;
             bft900.FileTypes = new FileType[]
             {
                BF.FileType.FromType(BF.FileType.FILE_TYPE_RAW_SR2_PS2),
+               BF.FileType.FromType(BF.FileType.FILE_TYPE_DRM_SR2_Room_DEMO_NTSC),
+               BF.FileType.FromType(BF.FileType.FILE_TYPE_DRM_SR2_Room_DEMO_PAL),
+               BF.FileType.FromType(BF.FileType.FILE_TYPE_DRM_SR2_Object),
+               BF.FileType.FromType(BF.FileType.FILE_TYPE_STR_SR2_PS2),
+               BF.FileType.FromType(BF.FileType.FILE_TYPE_RAWImage),
+               BF.FileType.FromType(BF.FileType.FILE_TYPE_SNF),
+               //BF.FileType.FromType(BF.FileType.FILE_TYPE_VRM),
                ftUnknown
             };
 
@@ -550,6 +560,8 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                 //BF.FileType.FromType(BF.FileType.FILE_TYPE_STR_SR2_PS2),
                 //BF.FileType.FromType(BF.FileType.FILE_TYPE_RAWImage),
                 BF.FileType.FromType(BF.FileType.FILE_TYPE_RAW_SR2_PS2),
+                BF.FileType.FromType(BF.FileType.FILE_TYPE_DRM_SR2_Room_RETAIL),
+                BF.FileType.FromType(BF.FileType.FILE_TYPE_DRM_SR2_Object),
                 ftUnknown
             };
 

@@ -86,7 +86,8 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                 FileStream iStream = new FileStream(Path, FileMode.Open, FileAccess.Read);
                 StreamReader iReader = new StreamReader(iStream);
 
-                while (iStream.Position < iStream.Length)
+                //while (iStream.Position < iStream.Length)
+                while (!iReader.EndOfStream)
                 {
                     try
                     {

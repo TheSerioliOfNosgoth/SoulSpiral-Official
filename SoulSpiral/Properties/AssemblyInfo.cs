@@ -30,7 +30,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Legacy of Kain: The Lost Worlds - http://www.thelostworlds.net/")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright 2006-2012 Ben Lincoln")]
+[assembly: AssemblyCopyright("Copyright 2006-2014 Ben Lincoln")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -49,5 +49,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.5.*")]
-[assembly: AssemblyFileVersion("1.5.*")]
+[assembly: AssemblyVersion("1.6.*")]
+[assembly: AssemblyFileVersion("1.6.*")]

@@ -84,7 +84,7 @@ namespace SoulSpiral
             this.lblCreator.Name = "lblCreator";
             this.lblCreator.Size = new System.Drawing.Size(560, 23);
             this.lblCreator.TabIndex = 15;
-            this.lblCreator.Text = "Copyright 2006-2012 Ben Lincoln";
+            this.lblCreator.Text = "Copyright 2006-2014 Ben Lincoln";
             this.lblCreator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblVersion
@@ -121,7 +121,7 @@ namespace SoulSpiral
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(560, 23);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Hex Editor panel component by Andrew Fradley";
+            this.label1.Text = "Hex Editor panel component and other significant contributions by Andrew Fradley";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
@@ -130,7 +130,7 @@ namespace SoulSpiral
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(560, 23);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Additional contributions by Andrew Fradley and Alexey Kragin";
+            this.label2.Text = "Additional contributions by Alexey Kragin";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmAbout

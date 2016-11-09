@@ -1,5 +1,5 @@
 ﻿// BenLincoln.TheLostWorlds.CDBigFile
-// Copyright 2006-2012 Ben Lincoln
+// Copyright 2006-2014 Ben Lincoln
 // http://www.thelostworlds.net/
 //
 
@@ -30,7 +30,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Legacy of Kain: The Lost Worlds - http://www.thelostworlds.net/")]
 [assembly: AssemblyProduct("BenLincoln.TheLostWorlds.CDBigFile")]
-[assembly: AssemblyCopyright("Copyright 2006-2012 Ben Lincoln")]
+[assembly: AssemblyCopyright("Copyright 2006-2014 Ben Lincoln")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.1.*")]
-[assembly: AssemblyFileVersion("1.1.*")]
+[assembly: AssemblyVersion("1.3.*")]
+[assembly: AssemblyFileVersion("1.3.*")]

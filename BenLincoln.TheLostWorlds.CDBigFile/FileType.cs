@@ -64,6 +64,10 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
         public const int FILE_TYPE_STR_SR2_PC = 30;
         public const int FILE_TYPE_CRM_SR1 = 28;
         public const int FILE_TYPE_RAW_SR2_PS2 = 32;
+        public const int FILE_TYPE_DRM_SR2_Object = 33;
+        public const int FILE_TYPE_DRM_SR2_Room_RETAIL = 34;
+        public const int FILE_TYPE_DRM_SR2_Room_DEMO_NTSC = 35;
+        public const int FILE_TYPE_DRM_SR2_Room_DEMO_PAL = 36;
 
         #region Properties
 
@@ -370,6 +374,46 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     ftRAWSR2PS2.FileExtension = "raw";
                     ftRAWSR2PS2.Header = new byte[] { 0x21, 0x57, 0x41, 0x52 };
                     return ftRAWSR2PS2;
+                    break;
+                case FILE_TYPE_DRM_SR2_Room_RETAIL:
+                    FileTypeWithInterlacedPointerData ftDRMSR2RoomRetail = new FileTypeWithInterlacedPointerData();
+                    ftDRMSR2RoomRetail.Name = "DRM - Room (Soul Reaver 2)";
+                    ftDRMSR2RoomRetail.Description = "A room definition from Soul Reaver 2";
+                    ftDRMSR2RoomRetail.FileExtension = "drm";
+                    ftDRMSR2RoomRetail.Header = new byte[] { 0x1D, 0x04, 0xC2, 0x04 }; // Retail
+                    ftDRMSR2RoomRetail.HeaderOffset = 0x84;
+                    ftDRMSR2RoomRetail.NamePointerOffset = 0x54;
+                    return ftDRMSR2RoomRetail;
+                    break;
+                case FILE_TYPE_DRM_SR2_Room_DEMO_NTSC:
+                    FileTypeWithInterlacedPointerData ftDRMSR2RoomDemoNTSC = new FileTypeWithInterlacedPointerData();
+                    ftDRMSR2RoomDemoNTSC.Name = "DRM - Room (Soul Reaver 2)";
+                    ftDRMSR2RoomDemoNTSC.Description = "A room definition from Soul Reaver 2";
+                    ftDRMSR2RoomDemoNTSC.FileExtension = "drm";
+                    ftDRMSR2RoomDemoNTSC.Header = new byte[] { 0x72, 0x41, 0x20, 0x4C }; // NTSC Demo
+                    ftDRMSR2RoomDemoNTSC.HeaderOffset = 0x84;
+                    ftDRMSR2RoomDemoNTSC.NamePointerOffset = 0x54;
+                    return ftDRMSR2RoomDemoNTSC;
+                    break;
+                case FILE_TYPE_DRM_SR2_Room_DEMO_PAL:
+                    FileTypeWithInterlacedPointerData ftDRMSR2RoomDemoPAL = new FileTypeWithInterlacedPointerData();
+                    ftDRMSR2RoomDemoPAL.Name = "DRM - Room (Soul Reaver 2)";
+                    ftDRMSR2RoomDemoPAL.Description = "A room definition from Soul Reaver 2";
+                    ftDRMSR2RoomDemoPAL.FileExtension = "drm";
+                    ftDRMSR2RoomDemoPAL.Header = new byte[] { 0x19, 0x04, 0xC2, 0x04 }; // PAL Demo
+                    ftDRMSR2RoomDemoPAL.HeaderOffset = 0x84;
+                    ftDRMSR2RoomDemoPAL.NamePointerOffset = 0x54;
+                    return ftDRMSR2RoomDemoPAL;
+                    break;
+                case FILE_TYPE_DRM_SR2_Object:
+                    FileTypeWithInterlacedPointerData ftDRMSR2Object = new FileTypeWithInterlacedPointerData();
+                    ftDRMSR2Object.Name = "DRM - Object (Soul Reaver 2)";
+                    ftDRMSR2Object.Description = "An object definition from Soul Reaver 2";
+                    ftDRMSR2Object.FileExtension = "drm";
+                    ftDRMSR2Object.Header = new byte[] { 0xA0, 0x0F, 0x10, 0x27, 0x70, 0x17, 0xE0, 0x2E };
+                    ftDRMSR2Object.HeaderOffset = 0x1C;
+                    ftDRMSR2Object.NamePointerOffset = 0x2C;
+                    return ftDRMSR2Object;
                     break;
                 default:
                     return new FileType();
