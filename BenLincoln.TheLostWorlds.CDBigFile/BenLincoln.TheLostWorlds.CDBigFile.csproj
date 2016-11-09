@@ -1,0 +1,83 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C7073F93-7262-49A6-8F14-022B0D38BF3F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BenLincoln.TheLostWorlds.CDBigFile</RootNamespace>
+    <AssemblyName>BenLincoln.TheLostWorlds.CDBigFile</AssemblyName>
+    <ApplicationIcon>SoulSpiral-Icon3.ICO</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BigFile.cs" />
+    <Compile Include="BigFileIndexReadException.cs" />
+    <Compile Include="BigFileOpenException.cs" />
+    <Compile Include="BigFileType.cs" />
+    <Compile Include="CompressedFile.cs" />
+    <Compile Include="DecompressionException.cs" />
+    <Compile Include="Directory.cs" />
+    <Compile Include="FileReadException.cs" />
+    <Compile Include="FileSizeMismatchException.cs" />
+    <Compile Include="FileTypeWithBlockHeader.cs" />
+    <Compile Include="FileTypeWithFixedHeader.cs" />
+    <Compile Include="FileTypeWithSR2Compression.cs" />
+    <Compile Include="FlatFileHashLookupTable.cs" />
+    <Compile Include="HashTableLoadException.cs" />
+    <Compile Include="HashTableNotFoundInDatabaseException.cs" />
+    <Compile Include="IndexIndex.cs" />
+    <Compile Include="File.cs" />
+    <Compile Include="FileIndex.cs" />
+    <Compile Include="FileIndexWithSeparateHashes.cs" />
+    <Compile Include="FileType.cs" />
+    <Compile Include="Fingerprint.cs" />
+    <Compile Include="HashLookupTable.cs" />
+    <Compile Include="Index.cs" />
+    <Compile Include="InvalidFileReferenceException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoulReaver2AirForgeDemoFileIndex.cs" />
+    <Compile Include="SoulReaver2PS2FileIndex.cs" />
+    <Compile Include="SoulReaverPlaystationPALFileIndex.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SoulSpiral-Icon3.ICO" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\BenLincoln.Data\BenLincoln.Data.csproj">
+      <Project>{DF353F83-5B56-4739-B143-3F8FBF072C41}</Project>
+      <Name>BenLincoln.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
