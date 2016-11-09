@@ -1,0 +1,4 @@
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.Data\bin\Release\BenLincoln.Data.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.Data\bin\Release\BenLincoln.Data.pdb
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.Data\obj\Release\BenLincoln.Data.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.Data\obj\Release\BenLincoln.Data.pdb

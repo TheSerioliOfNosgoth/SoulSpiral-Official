@@ -1,0 +1,9 @@
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.UI\bin\Debug\BenLincoln.UI.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.UI\bin\Debug\BenLincoln.UI.pdb
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.UI\obj\Debug\BenLincoln.UI.Dialogue.resources
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.UI\obj\Debug\BenLincoln.UI.NotificationDialogue.resources
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.UI\obj\Debug\BenLincoln.UI.ProgressWindow.resources
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.UI\obj\Debug\BenLincoln.UI.Properties.Resources.resources
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.UI\obj\Debug\BenLincoln.UI.csproj.GenerateResource.Cache
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.UI\obj\Debug\BenLincoln.UI.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.UI\obj\Debug\BenLincoln.UI.pdb

@@ -74,8 +74,8 @@
     <Content Include="SoulSpiral-Icon3.ICO" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\BenLincoln.Data\BenLincoln.Data.csproj">
-      <Project>{DF353F83-5B56-4739-B143-3F8FBF072C41}</Project>
+    <ProjectReference Include="..\BenLincoln.Data\BenLincoln.Data.csproj">
+      <Project>{df353f83-5b56-4739-b143-3f8fbf072c41}</Project>
       <Name>BenLincoln.Data</Name>
     </ProjectReference>
   </ItemGroup>

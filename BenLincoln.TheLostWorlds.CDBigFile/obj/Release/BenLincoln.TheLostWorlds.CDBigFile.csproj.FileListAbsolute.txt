@@ -1,0 +1,7 @@
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.TheLostWorlds.CDBigFile\bin\Release\BenLincoln.TheLostWorlds.CDBigFile.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.TheLostWorlds.CDBigFile\bin\Release\BenLincoln.TheLostWorlds.CDBigFile.pdb
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.TheLostWorlds.CDBigFile\bin\Release\BenLincoln.Data.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.TheLostWorlds.CDBigFile\bin\Release\BenLincoln.Data.pdb
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.TheLostWorlds.CDBigFile\obj\Release\BenLincoln.TheLostWorlds.CDBigFile.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.TheLostWorlds.CDBigFile\obj\Release\BenLincoln.TheLostWorlds.CDBigFile.dll
+C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.TheLostWorlds.CDBigFile\obj\Release\BenLincoln.TheLostWorlds.CDBigFile.pdb
