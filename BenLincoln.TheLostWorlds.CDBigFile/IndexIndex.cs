@@ -29,11 +29,11 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
 {
     public class IndexIndex : BF.Index
     {
-        protected int mSubIndexType;
+        protected IndexType mSubIndexType;
 
         #region Properties
 
-        public int SubIndexType
+        public IndexType SubIndexType
         {
             get
             {
@@ -50,7 +50,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
         public IndexIndex(string name, BF.BigFile parentBigFile, BF.Index parentIndex, long offset)
             : base(name, parentBigFile, parentIndex, offset)
         {
-            mSubIndexType = 0;
+            mSubIndexType = IndexType.Unknown;
         }
 
         public override void ReadIndex()

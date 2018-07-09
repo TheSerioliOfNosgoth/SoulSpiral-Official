@@ -10,7 +10,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BenLincoln.TheLostWorlds.CDBigFile</RootNamespace>
     <AssemblyName>BenLincoln.TheLostWorlds.CDBigFile</AssemblyName>
-    <ApplicationIcon>SoulSpiral-Icon3.ICO</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -44,9 +45,37 @@
     <Compile Include="BigFileIndexReadException.cs" />
     <Compile Include="BigFileOpenException.cs" />
     <Compile Include="BigFileType.cs" />
+    <Compile Include="BigFileTypeAkuji.cs" />
+    <Compile Include="BigFileTypeBloodOmen.cs" />
+    <Compile Include="BigFileTypeMadDashRacingBigFile.cs" />
+    <Compile Include="BigFileTypeCollection.cs" />
+    <Compile Include="BigFileTypeDefiancePC.cs" />
+    <Compile Include="BigFileTypeDefiancePlayStation2.cs" />
+    <Compile Include="BigFileTypeGex1PlayStation.cs" />
+    <Compile Include="BigFileTypeGex1Saturn.cs" />
+    <Compile Include="BigFileTypeGex2.cs" />
+    <Compile Include="BigFileTypeGex3.cs" />
+    <Compile Include="BigFileTypePandemonium.cs" />
+    <Compile Include="BigFileTypeSoulReaver2AirForgeDemo.cs" />
+    <Compile Include="BigFileTypeSoulReaver2PC.cs" />
+    <Compile Include="BigFileTypeSoulReaver2PlayStation2.cs" />
+    <Compile Include="BigFileTypeSoulReaverDreamcast.cs" />
+    <Compile Include="BigFileTypeSoulReaverPC.cs" />
+    <Compile Include="BigFileTypeSoulReaverPlayStation.cs" />
+    <Compile Include="BigFileTypeSoulReaverPlayStationPALPrereleaseJuly1999.cs" />
+    <Compile Include="BigFileTypeSoulReaverPlayStationPALRetail.cs" />
+    <Compile Include="BigFileTypeSoulReaverProto1Demo.cs" />
+    <Compile Include="BigFileTypeTombRaiderLegendPlayStation2.cs" />
+    <Compile Include="BigFileTypeTombRaiderLegendPlayStation2Demo.cs" />
+    <Compile Include="BigFileTypeWaltDisneyMagicalRacingTour.cs" />
+    <Compile Include="BigFileTypeWhiplashBigFile.cs" />
+    <Compile Include="BloodOmen2HashLookupTable.cs" />
+    <Compile Include="BloodOmen2WrappedFile.cs" />
     <Compile Include="CompressedFile.cs" />
     <Compile Include="DecompressionException.cs" />
     <Compile Include="Directory.cs" />
+    <Compile Include="MadDashRacingBigFileIndex.cs" />
+    <Compile Include="FileIndexWithCompressedFiles.cs" />
     <Compile Include="FileReadException.cs" />
     <Compile Include="FileSizeMismatchException.cs" />
     <Compile Include="FileTypeWithBlockHeader.cs" />
@@ -65,13 +94,15 @@
     <Compile Include="HashLookupTable.cs" />
     <Compile Include="Index.cs" />
     <Compile Include="InvalidFileReferenceException.cs" />
+    <Compile Include="PandemoniumFileIndex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoulReaver2AirForgeDemoFileIndex.cs" />
     <Compile Include="SoulReaver2PS2FileIndex.cs" />
+    <Compile Include="SoulReaverPlaystationPAL0x1b71FileIndex.cs" />
     <Compile Include="SoulReaverPlaystationPALFileIndex.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SoulSpiral-Icon3.ICO" />
+    <Compile Include="SR1Proto1CompressedFile.cs" />
+    <Compile Include="SR1Proto1FileIndex.cs" />
+    <Compile Include="WhiplashBigFileFileIndex.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BenLincoln.Data\BenLincoln.Data.csproj">

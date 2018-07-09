@@ -1,6 +1,6 @@
 // BenLincoln.TheLostWorlds.CDBigFile
-// Copyright 2006-2012 Ben Lincoln
-// http://www.thelostworlds.net/
+// Copyright 2006-2018 Ben Lincoln
+// https://www.thelostworlds.net/
 //
 
 // This file is part of BenLincoln.TheLostWorlds.CDBigFile.
@@ -28,6 +28,30 @@ using BD = BenLincoln.Data;
 
 namespace BenLincoln.TheLostWorlds.CDBigFile
 {
+    public enum IndexType
+    {
+        Unknown,
+        Pandemonium,
+        Gex1PlayStation,
+        Gex1Saturn,
+        BloodOmen,
+        Gex2,
+        SR1PC,
+        SR2AirForgeDemo,
+        SR2PS2,
+        SR2PC,
+        SR1PS1MainIndex,
+        SR1PS1SubIndex,
+        SR1PS1PALRetailMainIndex,
+        SR1PS1PALRetailSubIndex,
+        SR1PS1PALJuly1999MainIndex,
+        SR1PS1PALJuly1999SubIndex,
+        MadDashRacingBigFile,
+        WhiplashBigFile,
+        TRLPS2Demo,
+        TRLPS2
+    }
+
     public class Index
     {
         protected string mName;
@@ -64,23 +88,27 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
         protected const float READ_INDEX_PERCENT = 10;
         protected const float READ_CONTENT_PERCENT = 90;
 
-        public const int INDEX_TYPE_SI100 = 100;
-        public const int INDEX_TYPE_SI110 = 110;
-        public const int INDEX_TYPE_SI200 = 200;
-        public const int INDEX_TYPE_SI300 = 300;
-        public const int INDEX_TYPE_SI400 = 400;
-        public const int INDEX_TYPE_SI450 = 450;
-        public const int INDEX_TYPE_SI500 = 500;
-        public const int INDEX_TYPE_SI550 = 550;
-        public const int INDEX_TYPE_SI600 = 600;
-        public const int INDEX_TYPE_SI650 = 650;
-        public const int INDEX_TYPE_MI100 = 2100;
-        public const int INDEX_TYPE_MI150 = 2150;
-        public const int INDEX_TYPE_MI200 = 2200;
-        public const int INDEX_TYPE_MI250 = 2250;
+        /*public const int itGex1PlayStation = 100;
+        public const int itGex1Saturn = 110;
+        public const int itBloodOmen = 200;
+        public const int itGex2 = 300;
+        public const int itSoulReaverPC = 400;
+        public const int itSoulReaver2AirForgeDemoFileIndex = 450;
+        public const int itSoulReaver2PS2FileIndex = 500;
+        public const int itSoulReaver2PC = 550;
+        public const int itTombRaiderLegendPlayStation2Demo = 600;
+        public const int itTombRaiderLegendPlayStation2 = 650;
+        public const int itSoulReaverPlayStationMainIndex = 2100;
+        public const int itSoulReaverPlayStationSubIndex = 2150;
+        public const int itSoulReaverPlayStationPALRetailMainIndex = 2200;
+        public const int itSoulReaverPlaystationPALRetailSubIndex = 2250;
+        public const int itSoulReaverPlaystationPALPrereleaseJuly1999MainIndex = 2201;
+        public const int itSoulReaverPlaystationPALPrereleaseJuly1999SubIndex = 2251;
+        public const int itBloodOmen2FileIndex = 1000;*/
 
         //maximum number of entries (to help weed out bogus indices)
         protected const int MAX_ENTRIES = 32768;
+        //protected const int MAX_ENTRIES = 65530;
 
         protected bool mIsValidIndex = true;
 
@@ -306,12 +334,13 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     numEntriesUInt = BD.EndianConverter.ReverseUInt(numEntriesUInt);
                 }
                 int numEntries = 0;
-                if (numEntries <= MAX_ENTRIES)
+                if (numEntriesUInt <= MAX_ENTRIES)
                 {
                     numEntries = (int)numEntriesUInt;
                 }
 
-                if (numEntries > MAX_ENTRIES)
+                // This was going negative and sneaking through the check.
+                if (numEntriesUInt > (UInt32)MAX_ENTRIES)
                 {
                     iReader.Close();
                     iStream.Close();
@@ -490,49 +519,75 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             return CreateIndex(bigfile, bigfile.Type.MasterIndexType);
         }
 
-        public static BF.Index CreateIndex(BF.BigFile bigfile, int indexType)
+        public static BF.Index CreateIndex(BF.BigFile bigfile, IndexType indexType)
         {
             switch (indexType)
             {
-                case INDEX_TYPE_MI100:
-                    BF.IndexIndex ixiMI100;
-                    ixiMI100 = new BF.IndexIndex("Index", bigfile, null, 0);
-                    ixiMI100.EntryLength = 2;
-                    ixiMI100.OffsetPosition = 1;
+                case IndexType.Pandemonium:
+                    BF.PandemoniumFileIndex pfi = new PandemoniumFileIndex("Index", bigfile, null, 0);
+                    pfi.EntryLength = 2;
+                    pfi.OffsetPosition = 0;
+                    pfi.NameHashPosition = 1;
+                    return pfi;
+                    break;
+                case IndexType.SR1PS1MainIndex:
+                    BF.IndexIndex ixiSoulReaverPlayStationMainIndex;
+                    ixiSoulReaverPlayStationMainIndex = new BF.IndexIndex("Index", bigfile, null, 0);
+                    ixiSoulReaverPlayStationMainIndex.EntryLength = 2;
+                    ixiSoulReaverPlayStationMainIndex.OffsetPosition = 1;
                     //??Position = 0;
-                    ixiMI100.SubIndexType = INDEX_TYPE_MI150;
-                    return ixiMI100;
+                    ixiSoulReaverPlayStationMainIndex.SubIndexType = IndexType.SR1PS1SubIndex;
+                    return ixiSoulReaverPlayStationMainIndex;
                     break;
-                case INDEX_TYPE_MI150:
-                    BF.FileIndex ixfMI150;
-                    ixfMI150 = new BF.FileIndex("Index", bigfile, null, 0);
-                    ixfMI150.EntryLength = 4;
-                    ixfMI150.NameHashPosition = 0;
-                    ixfMI150.LengthPosition = 1;
-                    ixfMI150.OffsetPosition = 2;
+                case IndexType.SR1PS1SubIndex:
+                    BF.FileIndex ixfSoulReaverPlayStationSubIndex;
+                    ixfSoulReaverPlayStationSubIndex = new BF.FileIndex("Index", bigfile, null, 0);
+                    ixfSoulReaverPlayStationSubIndex.EntryLength = 4;
+                    ixfSoulReaverPlayStationSubIndex.NameHashPosition = 0;
+                    ixfSoulReaverPlayStationSubIndex.LengthPosition = 1;
+                    ixfSoulReaverPlayStationSubIndex.OffsetPosition = 2;
                     //??Position = 3;
-                    return ixfMI150;
+                    return ixfSoulReaverPlayStationSubIndex;
                     break;
-                case INDEX_TYPE_MI200:
-                    BF.IndexIndex ixiMI200;
-                    ixiMI200 = new BF.IndexIndex("Index", bigfile, null, 0);
-                    ixiMI200.EntryLength = 2;
-                    ixiMI200.OffsetPosition = 1;
+                case IndexType.SR1PS1PALRetailMainIndex:
+                    BF.IndexIndex ixiSoulReaverPlayStationPALRetailMainIndex;
+                    ixiSoulReaverPlayStationPALRetailMainIndex = new BF.IndexIndex("Index", bigfile, null, 0);
+                    ixiSoulReaverPlayStationPALRetailMainIndex.EntryLength = 2;
+                    ixiSoulReaverPlayStationPALRetailMainIndex.OffsetPosition = 1;
                     //??Position = 0;
-                    ixiMI200.SubIndexType = INDEX_TYPE_MI250;
-                    return ixiMI200;
+                    ixiSoulReaverPlayStationPALRetailMainIndex.SubIndexType = IndexType.SR1PS1PALRetailSubIndex;
+                    return ixiSoulReaverPlayStationPALRetailMainIndex;
                     break;
-                case INDEX_TYPE_MI250:
-                    BF.SoulReaverPlaystationPALFileIndex ixfMI250;
-                    ixfMI250 = new BF.SoulReaverPlaystationPALFileIndex("Index", bigfile, null, 0);
-                    ixfMI250.EntryLength = 4;
-                    ixfMI250.NameHashPosition = 0;
-                    ixfMI250.LengthPosition = 1;
-                    ixfMI250.OffsetPosition = 2;
+                case IndexType.SR1PS1PALRetailSubIndex:
+                    BF.SoulReaverPlaystationPALFileIndex ixfSoulReaverPlaystationPALRetailSubIndex;
+                    ixfSoulReaverPlaystationPALRetailSubIndex = new BF.SoulReaverPlaystationPALFileIndex("Index", bigfile, null, 0);
+                    ixfSoulReaverPlaystationPALRetailSubIndex.EntryLength = 4;
+                    ixfSoulReaverPlaystationPALRetailSubIndex.NameHashPosition = 0;
+                    ixfSoulReaverPlaystationPALRetailSubIndex.LengthPosition = 1;
+                    ixfSoulReaverPlaystationPALRetailSubIndex.OffsetPosition = 2;
                     //??Position = 3;
-                    return ixfMI250;
+                    return ixfSoulReaverPlaystationPALRetailSubIndex;
                     break;
-                case INDEX_TYPE_SI100:
+                case IndexType.SR1PS1PALJuly1999MainIndex:
+                    BF.IndexIndex ixiSoulReaverPlayStationPALPrereleaseJuly1999MainIndex;
+                    ixiSoulReaverPlayStationPALPrereleaseJuly1999MainIndex = new BF.IndexIndex("Index", bigfile, null, 0);
+                    ixiSoulReaverPlayStationPALPrereleaseJuly1999MainIndex.EntryLength = 2;
+                    ixiSoulReaverPlayStationPALPrereleaseJuly1999MainIndex.OffsetPosition = 1;
+                    //??Position = 0;
+                    ixiSoulReaverPlayStationPALPrereleaseJuly1999MainIndex.SubIndexType = IndexType.SR1PS1PALJuly1999SubIndex;
+                    return ixiSoulReaverPlayStationPALPrereleaseJuly1999MainIndex;
+                    break;
+                case IndexType.SR1PS1PALJuly1999SubIndex:
+                    BF.SoulReaverPlaystationPALFileIndex ixfSoulReaverPlaystationPALPrereleaseJuly1999SubIndex;
+                    ixfSoulReaverPlaystationPALPrereleaseJuly1999SubIndex = new BF.SoulReaverPlaystationPAL0x1b71FileIndex("Index", bigfile, null, 0);
+                    ixfSoulReaverPlaystationPALPrereleaseJuly1999SubIndex.EntryLength = 4;
+                    ixfSoulReaverPlaystationPALPrereleaseJuly1999SubIndex.NameHashPosition = 0;
+                    ixfSoulReaverPlaystationPALPrereleaseJuly1999SubIndex.LengthPosition = 1;
+                    ixfSoulReaverPlaystationPALPrereleaseJuly1999SubIndex.OffsetPosition = 2;
+                    //??Position = 3;
+                    return ixfSoulReaverPlaystationPALPrereleaseJuly1999SubIndex;
+                    break;
+                case IndexType.Gex1PlayStation:
                     BF.FileIndex ixfSI100;
                     ixfSI100 = new BF.FileIndex("Index", bigfile, null, 0);
                     ixfSI100.FirstEntryOffset = 20;
@@ -543,7 +598,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     //??Position = 3;
                     return ixfSI100;
                     break;
-                case INDEX_TYPE_SI110:
+                case IndexType.Gex1Saturn:
                     BF.FileIndex ixfSI110;
                     ixfSI110 = new BF.FileIndex("Index", bigfile, null, 0);
                     ixfSI110.Endianness = BenLincoln.Data.Endianness.Big;
@@ -555,7 +610,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     //??Position = 3;
                     return ixfSI110;
                     break;
-                case INDEX_TYPE_SI200:
+                case IndexType.BloodOmen:
                     BF.FileIndex ixfSI200;
                     ixfSI200 = new BF.FileIndex("Index", bigfile, null, 0);
                     ixfSI200.EntryLength = 3;
@@ -564,19 +619,21 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     ixfSI200.OffsetPosition = 2;
                     return ixfSI200;
                     break;
-                case INDEX_TYPE_SI300:
-                    BF.FileIndex ixfSI300;
-                    ixfSI300 = new BF.FileIndex("Index", bigfile, null, 0);
+                case IndexType.Gex2:
+                    BF.SR1Proto1FileIndex ixfSI300;
+                    ixfSI300 = new BF.SR1Proto1FileIndex("Index", bigfile, null, 0);
                     ixfSI300.EntryLength = 6;
                     ixfSI300.NameHashPosition = 0;
                     ixfSI300.LengthPosition = 1;
                     ixfSI300.OffsetPosition = 3;
+                    ixfSI300.CompressedLengthPosition = 2;
+                    //ixfSI300.
                     //??Position = 2;
                     //??Position = 4;
                     //??Position = 5;
                     return ixfSI300;
                     break;
-                case INDEX_TYPE_SI400:
+                case IndexType.SR1PC:
                     BF.FileIndex ixfSI400;
                     ixfSI400 = new BF.FileIndex("Index", bigfile, null, 0);
                     ixfSI400.EntryLength = 4;
@@ -586,26 +643,26 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     //??Position = 3;
                     return ixfSI400;
                     break;
-                case INDEX_TYPE_SI450:
-                    BF.SoulReaver2AirForgeDemoFileIndex ixfSI450;
-                    ixfSI450 = new BF.SoulReaver2AirForgeDemoFileIndex("Index", bigfile, null, 0);
-                    ixfSI450.EntryLength = 4;
-                    ixfSI450.NameHashPosition = 0;
-                    ixfSI450.LengthPosition = 1;
-                    ixfSI450.OffsetPosition = 2;
-                    ixfSI450.CompressedLengthPosition = 3;
-                    return ixfSI450;
+                case IndexType.SR2AirForgeDemo:
+                    BF.SoulReaver2AirForgeDemoFileIndex ixfSoulReaver2AirForgeDemo;
+                    ixfSoulReaver2AirForgeDemo = new BF.SoulReaver2AirForgeDemoFileIndex("Index", bigfile, null, 0);
+                    ixfSoulReaver2AirForgeDemo.EntryLength = 4;
+                    ixfSoulReaver2AirForgeDemo.NameHashPosition = 0;
+                    ixfSoulReaver2AirForgeDemo.LengthPosition = 1;
+                    ixfSoulReaver2AirForgeDemo.OffsetPosition = 2;
+                    ixfSoulReaver2AirForgeDemo.CompressedLengthPosition = 3;
+                    return ixfSoulReaver2AirForgeDemo;
                     break;
-                case INDEX_TYPE_SI500:
-                    BF.SoulReaver2PS2FileIndex ixfSI500;
-                    ixfSI500 = new BF.SoulReaver2PS2FileIndex("Index", bigfile, null, 0);
-                    ixfSI500.EntryLength = 3;
-                    ixfSI500.LengthPosition = 0;
-                    ixfSI500.OffsetPosition = 1;
-                    ixfSI500.CompressedLengthPosition = 2;
-                    return ixfSI500;
+                case IndexType.SR2PS2:
+                    BF.SoulReaver2PS2FileIndex ixfSoulReaver2PS2FileIndex;
+                    ixfSoulReaver2PS2FileIndex = new BF.SoulReaver2PS2FileIndex("Index", bigfile, null, 0);
+                    ixfSoulReaver2PS2FileIndex.EntryLength = 3;
+                    ixfSoulReaver2PS2FileIndex.LengthPosition = 0;
+                    ixfSoulReaver2PS2FileIndex.OffsetPosition = 1;
+                    ixfSoulReaver2PS2FileIndex.CompressedLengthPosition = 2;
+                    return ixfSoulReaver2PS2FileIndex;
                     break;
-                case INDEX_TYPE_SI550:
+                case IndexType.SR2PC:
                     BF.FileIndexWithSeparateHashes ixfSI550;
                     ixfSI550 = new BF.FileIndexWithSeparateHashes("Index", bigfile, null, 0);
                     ixfSI550.EntryLength = 3;
@@ -614,7 +671,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     //??Position = 2;
                     return ixfSI550;
                     break;
-                case INDEX_TYPE_SI600:
+                case IndexType.TRLPS2Demo:
                     BF.FileIndexWithSeparateHashes ixfSI600;
                     ixfSI600 = new BF.FileIndexWithSeparateHashes("Index", bigfile, null, 0);
                     ixfSI600.EntryLength = 4;
@@ -624,7 +681,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     //??Position = 3;
                     return ixfSI600;
                     break;
-                case INDEX_TYPE_SI650:
+                case IndexType.TRLPS2:
                     BF.FileIndexWithSeparateHashes ixfSI650;
                     ixfSI650 = new BF.FileIndexWithSeparateHashes("Index", bigfile, null, 0);
                     ixfSI650.EntryLength = 4;
@@ -635,6 +692,22 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     //this index type uses offset values divided by 2048
                     ixfSI650.OffsetMultiplier = 2048;
                     return ixfSI650;
+                    break;
+                case IndexType.MadDashRacingBigFile:
+                    BF.MadDashRacingBigFileIndex ixfBloodOmen2FileIndex;
+                    ixfBloodOmen2FileIndex = new BF.MadDashRacingBigFileIndex("Index", bigfile, null, 0);
+                    ixfBloodOmen2FileIndex.FirstEntryOffset = 0;
+                    ixfBloodOmen2FileIndex.EntryLength = 10;
+                    ixfBloodOmen2FileIndex.OffsetPosition = 0;
+                    return ixfBloodOmen2FileIndex;
+                    break;
+                case IndexType.WhiplashBigFile:
+                    BF.WhiplashBigFileFileIndex ixfWhiplashBigFileFileIndex;
+                    ixfWhiplashBigFileFileIndex = new BF.WhiplashBigFileFileIndex("Index", bigfile, null, 0);
+                    ixfWhiplashBigFileFileIndex.FirstEntryOffset = 0;
+                    ixfWhiplashBigFileFileIndex.EntryLength = 10;
+                    ixfWhiplashBigFileFileIndex.OffsetPosition = 0;
+                    return ixfWhiplashBigFileFileIndex;
                     break;
             }
 

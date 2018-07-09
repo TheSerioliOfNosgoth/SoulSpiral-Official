@@ -1,0 +1,15 @@
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\bin\Debug\BenLincoln.Data.dll
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\bin\Debug\BenLincoln.Data.pdb
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\Debug\BenLincoln.Data.dll
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\Debug\BenLincoln.Data.pdb
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\bin\Release\BenLincoln.Data.dll
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\bin\Release\BenLincoln.Data.pdb
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\Release\ResolveAssemblyReference.cache
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\Release\BenLincoln.Data.dll
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\Release\BenLincoln.Data.pdb
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\bin\x86\Debug\BenLincoln.Data.dll
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\bin\x86\Debug\BenLincoln.Data.pdb
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\x86\Debug\BenLincoln.Data.dll
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\x86\Debug\BenLincoln.Data.pdb

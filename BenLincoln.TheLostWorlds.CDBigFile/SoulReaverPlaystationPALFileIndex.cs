@@ -28,9 +28,14 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
 {
     public class SoulReaverPlaystationPALFileIndex : BF.FileIndex
     {
+        protected ushort _XorValue16 = 0xB722;
+        protected uint _XorValue32 = 0xB722B722;
+
         public SoulReaverPlaystationPALFileIndex(string name, BF.BigFile parentBigFile, BF.Index parentIndex, long offset)
             : base(name, parentBigFile, parentIndex, offset)
         {
+            _XorValue16 = 0xB722;
+            _XorValue32 = 0xB722B722;
         }
 
         //for the PAL Playstation version of SR
@@ -45,7 +50,8 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
 
             //get the number of entries in the index
             //B722 is the magic number for this file type
-            int numEntries = iReader.ReadUInt16() ^ 0xB722;
+            ushort rawValue = iReader.ReadUInt16();
+            int numEntries = rawValue ^ _XorValue16;
             if (numEntries > MAX_ENTRIES)
             {
                 iReader.Close();
@@ -63,7 +69,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     entries[i] = new uint[mEntryLength];
                     for (int j = 0; j < mEntryLength; j++)
                     {
-                        entries[i][j] = iReader.ReadUInt32() ^ 0xB722B722;
+                        entries[i][j] = iReader.ReadUInt32() ^ _XorValue32;
                     }
                     if (i > 0)
                     {

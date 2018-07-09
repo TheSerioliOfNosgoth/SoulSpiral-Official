@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using BF = BenLincoln.TheLostWorlds.CDBigFile;
+using BLD = BenLincoln.Data;
 
 namespace BenLincoln.TheLostWorlds.CDBigFile
 {
@@ -79,7 +80,8 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
 
         public override bool CheckType(BF.File checkFile)
         {
-            if ((checkFile.HashedName & 7) != 0)
+            byte[] hashedNameBytes = BLD.HexConverter.HexStringToBytes(checkFile.HashedName);
+            if ((hashedNameBytes[hashedNameBytes.Length - 1] & 7) != 0)
             {
                 return false;
             }

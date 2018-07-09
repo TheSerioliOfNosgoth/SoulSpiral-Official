@@ -56,17 +56,35 @@ namespace SoulSpiral
             ExportDirectoryRecursive(mSourceDirectory, mTargetPath);
         }
 
+        protected string ReplaceInvalidPathCharacters(string inputPath, bool replaceBackslash)
+        {
+            string result = inputPath;
+
+            result = result.Replace(":", "[colon]");
+            result = result.Replace("/", "[forward_slash]");
+
+            if (replaceBackslash)
+            {
+                result = result.Replace("\\", "[backslash]");
+            }
+
+            return result;
+        }
+
         protected void ExportDirectoryRecursive(BF.Directory xDir, string targetPath)
         {
-            if (!(System.IO.Directory.Exists(targetPath)))
+            //string realTargetPath = ReplaceInvalidPathCharacters(targetPath, false);
+            string realTargetPath = targetPath;
+            if (!(System.IO.Directory.Exists(realTargetPath)))
             {
-                System.IO.Directory.CreateDirectory(targetPath);
+                System.IO.Directory.CreateDirectory(realTargetPath);
             }
             if (xDir.Directories.Count > 0)
             {
                 foreach (BF.Directory subDir in xDir.Directories)
                 {
-                    ExportDirectoryRecursive(subDir, targetPath + "\\" + subDir.Name);
+                    string subDirName = ReplaceInvalidPathCharacters(subDir.Name, true);
+                    ExportDirectoryRecursive(subDir, Path.Combine(targetPath, subDirName));
                 }
             }
 
@@ -74,7 +92,8 @@ namespace SoulSpiral
             {
                 foreach (BF.File currentFile in xDir.Files)
                 {
-                    currentFile.Export(targetPath + "\\" + currentFile.Name + "." + currentFile.FileExtension);
+                    string currentFileName = ReplaceInvalidPathCharacters(currentFile.Name + "." + currentFile.FileExtension, true);
+                    currentFile.Export(Path.Combine(targetPath, currentFileName));
                     mCurrentFile++;
                 }
             }

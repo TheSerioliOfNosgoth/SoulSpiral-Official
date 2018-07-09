@@ -28,9 +28,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Soul Spiral")]
 [assembly: AssemblyDescription("A Gex Engine Data Extractor")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Legacy of Kain: The Lost Worlds - http://www.thelostworlds.net/")]
+[assembly: AssemblyCompany("Legacy of Kain: The Lost Worlds - https://www.thelostworlds.net/")]
 [assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright 2006-2014 Ben Lincoln")]
+[assembly: AssemblyCopyright("Copyright 2006-2018 Ben Lincoln")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -49,5 +49,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.7.*")]
-[assembly: AssemblyFileVersion("1.7.*")]
+[assembly: AssemblyVersion("1.8.*")]
+[assembly: AssemblyFileVersion("1.8.*")]

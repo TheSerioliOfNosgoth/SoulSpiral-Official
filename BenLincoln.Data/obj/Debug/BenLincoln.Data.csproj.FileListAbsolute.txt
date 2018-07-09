@@ -1,4 +1,10 @@
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.Data\bin\Debug\BenLincoln.Data.dll
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.Data\bin\Debug\BenLincoln.Data.pdb
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.Data\obj\Debug\BenLincoln.Data.dll
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\BenLincoln.Data\obj\Debug\BenLincoln.Data.pdb
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\bin\Debug\BenLincoln.Data.dll
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\bin\Debug\BenLincoln.Data.pdb
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\Debug\BenLincoln.Data.dll
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\Debug\BenLincoln.Data.pdb
+C:\Users\blincoln\Documents\Visual Studio 2005\Projects\BenLincoln.Data\obj\Debug\BenLincoln.Data.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\bin\Debug\BenLincoln.Data.dll
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\bin\Debug\BenLincoln.Data.pdb
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\obj\Debug\BenLincoln.Data.csproj.CoreCompileInputs.cache
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\obj\Debug\BenLincoln.Data.dll
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\obj\Debug\BenLincoln.Data.pdb

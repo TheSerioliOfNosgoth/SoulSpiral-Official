@@ -81,20 +81,27 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
         public override void ReadIndex()
         {
             ReadEntries();
-            int numFiles = mEntries.GetUpperBound(0) + 1;
-            mFileCount = numFiles;
-            if (IsValidIndex)
+            if (mEntries != null)
             {
-                Files = new BF.File[numFiles];
-                for (int i = 0; i < numFiles; i++)
+                int numFiles = mEntries.GetUpperBound(0) + 1;
+                mFileCount = numFiles;
+                if (IsValidIndex)
                 {
-                    BF.File tFile = new BF.File(mParentBigFile, this, mEntries[i], mNameHashPosition, mOffsetPosition, mLengthPosition);
-                    Files[i] = tFile;
-                    if (i > 0)
+                    Files = new BF.File[numFiles];
+                    for (int i = 0; i < numFiles; i++)
                     {
-                        mLoadedPercent = (((float)i / (float)numFiles) * READ_CONTENT_PERCENT) + READ_INDEX_PERCENT;
+                        BF.File tFile = new BF.File(mParentBigFile, this, mEntries[i], mNameHashPosition, mOffsetPosition, mLengthPosition);
+                        Files[i] = tFile;
+                        if (i > 0)
+                        {
+                            mLoadedPercent = (((float)i / (float)numFiles) * READ_CONTENT_PERCENT) + READ_INDEX_PERCENT;
+                        }
                     }
                 }
+            }
+            else
+            {
+                mFileCount = 0;
             }
         }
     }

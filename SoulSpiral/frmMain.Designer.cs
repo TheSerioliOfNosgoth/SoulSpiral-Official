@@ -57,6 +57,9 @@ namespace SoulSpiral
             this.mnuView = new System.Windows.Forms.MenuItem();
             this.mnuDirectoryNames = new System.Windows.Forms.MenuItem();
             this.mnuRawIndexNames = new System.Windows.Forms.MenuItem();
+            this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.mnuParseNames = new System.Windows.Forms.MenuItem();
+            this.mnuAlwaysUseHash = new System.Windows.Forms.MenuItem();
             this.mnuExport = new System.Windows.Forms.MenuItem();
             this.mnuExportCurrent = new System.Windows.Forms.MenuItem();
             this.mnuExportDirectory = new System.Windows.Forms.MenuItem();
@@ -88,6 +91,7 @@ namespace SoulSpiral
             this.pnlButtons.SuspendLayout();
             this.gboButtons.SuspendLayout();
             this.pnlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitMain)).BeginInit();
             this.splitMain.Panel1.SuspendLayout();
             this.splitMain.Panel2.SuspendLayout();
             this.splitMain.SuspendLayout();
@@ -128,7 +132,10 @@ namespace SoulSpiral
             this.mnuView.Index = 1;
             this.mnuView.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.mnuDirectoryNames,
-            this.mnuRawIndexNames});
+            this.mnuRawIndexNames,
+            this.menuItem1,
+            this.mnuParseNames,
+            this.mnuAlwaysUseHash});
             this.mnuView.Text = "&View";
             // 
             // mnuDirectoryNames
@@ -142,6 +149,23 @@ namespace SoulSpiral
             this.mnuRawIndexNames.Index = 1;
             this.mnuRawIndexNames.Text = "&Raw Index Names";
             this.mnuRawIndexNames.Click += new System.EventHandler(this.mnuRawIndexNames_Click);
+            // 
+            // menuItem1
+            // 
+            this.menuItem1.Index = 2;
+            this.menuItem1.Text = "-";
+            // 
+            // mnuParseNames
+            // 
+            this.mnuParseNames.Index = 3;
+            this.mnuParseNames.Text = "&Parse File Names From Known Filetypes";
+            this.mnuParseNames.Click += new System.EventHandler(this.mnuParseNames_Click);
+            // 
+            // mnuAlwaysUseHash
+            // 
+            this.mnuAlwaysUseHash.Index = 4;
+            this.mnuAlwaysUseHash.Text = "&Always Use Hash Value For Missing File Names";
+            this.mnuAlwaysUseHash.Click += new System.EventHandler(this.mnuAlwaysUseHash_Click);
             // 
             // mnuExport
             // 
@@ -425,6 +449,7 @@ namespace SoulSpiral
             this.splitMain.Panel1.ResumeLayout(false);
             this.splitMain.Panel2.ResumeLayout(false);
             this.splitMain.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitMain)).EndInit();
             this.splitMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -467,6 +492,9 @@ namespace SoulSpiral
         private BenLincoln.UI.HoverImageButton btnHexEdit;
         private System.Windows.Forms.ImageList ilHexEditButton;
         private System.Windows.Forms.MenuItem mnuHexEdit;
+        private System.Windows.Forms.MenuItem menuItem1;
+        private System.Windows.Forms.MenuItem mnuParseNames;
+        private System.Windows.Forms.MenuItem mnuAlwaysUseHash;
     }
 }
 

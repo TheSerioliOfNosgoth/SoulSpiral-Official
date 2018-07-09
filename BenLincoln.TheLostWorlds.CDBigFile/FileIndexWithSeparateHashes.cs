@@ -23,17 +23,18 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using BF = BenLincoln.TheLostWorlds.CDBigFile;
+using BLD = BenLincoln.Data;
 
 namespace BenLincoln.TheLostWorlds.CDBigFile
 {
     public class FileIndexWithSeparateHashes : BF.FileIndex
     {
-        protected uint[] mHashes;
+        protected string[] mHashes;
         protected int mHashOffset = 0;
 
         #region Properties
 
-        public uint[] Hashes
+        public string[] Hashes
         {
             get
             {
@@ -82,7 +83,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
 
         protected override void ReadEntries()
         {
-            uint[] hashes;
+            string[] hashes;
             uint[][] entries;
             FileStream iStream;
             BinaryReader iReader;
@@ -97,10 +98,10 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                 int numEntries = iReader.ReadUInt16();
                 //proceed to read the rest of the index - 4 bytes past the length indicator
                 iStream.Seek(Offset + mFirstEntryOffset, SeekOrigin.Begin);
-                hashes = new uint[numEntries];
+                hashes = new string[numEntries];
                 for (int i = 0; i < numEntries; i++)
                 {
-                    hashes[i] = iReader.ReadUInt32();
+                    hashes[i] = BLD.HexConverter.ByteArrayToHexString(BLD.BinaryConverter.UIntToByteArray(iReader.ReadUInt32()));
                 }
 
                 entries = new uint[numEntries][];

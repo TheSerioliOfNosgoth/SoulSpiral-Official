@@ -1,7 +1,8 @@
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\AndrewFradley.HexPanel\bin\Release\AndrewFradley.HexPanel.dll
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\AndrewFradley.HexPanel\bin\Release\AndrewFradley.HexPanel.pdb
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\AndrewFradley.HexPanel\obj\Release\HexEditor.HexPanel.resources
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\AndrewFradley.HexPanel\obj\Release\AndrewFradley.HexPanel.csproj.GenerateResource.Cache
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\AndrewFradley.HexPanel\obj\Release\AndrewFradley.HexPanel.dll
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\AndrewFradley.HexPanel\obj\Release\AndrewFradley.HexPanel.pdb
-C:\Users\Andrew\Documents\Visual Studio 2015\Projects\SoulSpiral\AndrewFradley.HexPanel\obj\Release\AndrewFradley.HexPanel.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\source\repos\SoulSpiral-Official\AndrewFradley.HexPanel\bin\Release\AndrewFradley.HexPanel.dll
+C:\Users\Andrew\source\repos\SoulSpiral-Official\AndrewFradley.HexPanel\bin\Release\AndrewFradley.HexPanel.pdb
+C:\Users\Andrew\source\repos\SoulSpiral-Official\AndrewFradley.HexPanel\obj\Release\AndrewFradley.HexPanel.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\source\repos\SoulSpiral-Official\AndrewFradley.HexPanel\obj\Release\HexEditor.HexPanel.resources
+C:\Users\Andrew\source\repos\SoulSpiral-Official\AndrewFradley.HexPanel\obj\Release\AndrewFradley.HexPanel.csproj.GenerateResource.cache
+C:\Users\Andrew\source\repos\SoulSpiral-Official\AndrewFradley.HexPanel\obj\Release\AndrewFradley.HexPanel.csproj.CoreCompileInputs.cache
+C:\Users\Andrew\source\repos\SoulSpiral-Official\AndrewFradley.HexPanel\obj\Release\AndrewFradley.HexPanel.dll
+C:\Users\Andrew\source\repos\SoulSpiral-Official\AndrewFradley.HexPanel\obj\Release\AndrewFradley.HexPanel.pdb

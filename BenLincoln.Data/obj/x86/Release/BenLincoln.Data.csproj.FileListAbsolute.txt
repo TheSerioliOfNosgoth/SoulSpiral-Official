@@ -1,0 +1,6 @@
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\bin\x86\Release\BenLincoln.Data.dll
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\bin\x86\Release\BenLincoln.Data.pdb
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\obj\x86\Release\BenLincoln.Data.csprojResolveAssemblyReference.cache
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\obj\x86\Release\BenLincoln.Data.csproj.CoreCompileInputs.cache
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\obj\x86\Release\BenLincoln.Data.dll
+C:\Users\Andrew\source\repos\SoulSpiral-Official\BenLincoln.Data\obj\x86\Release\BenLincoln.Data.pdb

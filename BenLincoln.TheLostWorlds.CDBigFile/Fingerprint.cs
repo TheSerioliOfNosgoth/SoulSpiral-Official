@@ -22,13 +22,22 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using BF = BenLincoln.TheLostWorlds.CDBigFile;
+using BLD = BenLincoln.Data;
 
 namespace BenLincoln.TheLostWorlds.CDBigFile
 {
     public class Fingerprint
     {
-        protected string mName;
+        protected string mTitle;
+        protected string mPlatform;
+        protected string mFormat;
+        protected string mLanguage;
+        protected string mReleaseType;
+        protected string mReleaseID;
+        protected string mFileName;
+        protected string mBuildDate;
         protected long mFileSize;
+        protected byte[] mSHA256Hash;
         protected BF.BigFileType mType;
 
         #region Properties
@@ -45,15 +54,99 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             }
         }
 
-        public string Name
+        public string Title
         {
             get
             {
-                return mName;
+                return mTitle;
             }
             set
             {
-                mName = value;
+                mTitle = value;
+            }
+        }
+
+        public string Platform
+        {
+            get
+            {
+                return mPlatform;
+            }
+            set
+            {
+                mPlatform = value;
+            }
+        }
+
+        public string Format
+        {
+            get
+            {
+                return mFormat;
+            }
+            set
+            {
+                mFormat = value;
+            }
+        }
+
+        public string Language
+        {
+            get
+            {
+                return mLanguage;
+            }
+            set
+            {
+                mLanguage = value;
+            }
+        }
+
+        public string ReleaseType
+        {
+            get
+            {
+                return mReleaseType;
+            }
+            set
+            {
+                mReleaseType = value;
+            }
+        }
+
+        public string ReleaseID
+        {
+            get
+            {
+                return mReleaseID;
+            }
+            set
+            {
+                mReleaseID = value;
+            }
+        }
+
+        public string FileName
+        {
+            get
+            {
+                return mFileName;
+            }
+            set
+            {
+                mFileName = value;
+            }
+        }
+
+        public string BuildDate
+        {
+            get
+            {
+                return mBuildDate;
+            }
+            set
+            {
+                mBuildDate = value;
             }
         }
 
@@ -69,31 +162,89 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             }
         }
 
+        public byte[] SHA256Hash
+        {
+            get
+            {
+                return mSHA256Hash;
+            }
+            set
+            {
+                mSHA256Hash = value;
+            }
+        }
+
         #endregion
 
         public Fingerprint()
         {
-            Name = "Unrecognized File";
+            Title = "Unrecognized File";
+            Platform = "";
+            Format = "";
+            Language = "";
+            ReleaseType = "";
+
+            BuildDate = "";
             FileSize = 0;
+            Type = new BigFileType();
+            mSHA256Hash = BLD.HexConverter.HexStringToBytes("0000000000000000000000000000000000000000000000000000000000000000");
+        }
+
+        public virtual string GetDisplayName()
+        {
+            string result = string.Format("{0} ({1}", Title, Platform);
+            if (Format != "")
+            {
+                result = result + string.Format("/{0}", Format);
+                //return string.Format("{0} ({1}/{2}/{3} - {4} - {5})", Title, Platform, Format, Language, ReleaseType, BuildDate);
+            }
+            result = result + string.Format("/{0}", Language);
+            result = result + ")";
+            if (ReleaseID != "")
+            {
+                result = result + string.Format(" - {0}", ReleaseID);
+            }
+            result = result + string.Format(" - {0}", ReleaseType);
+            if (BuildDate != "")
+            {
+                result = result + string.Format(" - {0}", BuildDate);
+            }
+            if (FileName != "")
+            {
+                result = result + string.Format(" ({0})", FileName);
+            } 
+            return result;
         }
 
         //if the file size has not been specified, treat this as a generic "unrecognized" fingerprint
-        public virtual bool CheckBigFileForMatch(BF.BigFile compareFile)
+        public virtual bool CheckBigFileForMatch(BF.BigFile compareFile, bool checkHash)
         {
             if (FileSize == 0)
             {
-                return true;
+                return false;
             }
             else
             {
-                if (FileSize == compareFile.FileSize)
+                bool isMatch = true;
+                if (FileSize != compareFile.FileSize)
                 {
-                    return true;
+                    isMatch = false;
                 }
                 else
                 {
-                    return false;
+                    if (checkHash)
+                    {
+                        string strHash = BLD.HexConverter.ByteArrayToHexString(SHA256Hash);
+                        if (strHash != "0000000000000000000000000000000000000000000000000000000000000000")
+                        {
+                            if (strHash != BLD.HexConverter.ByteArrayToHexString(compareFile.SHA256Hash))
+                            {
+                                isMatch = false;
+                            }
+                        }
+                    }
                 }
+                return isMatch;
             }
         }
 

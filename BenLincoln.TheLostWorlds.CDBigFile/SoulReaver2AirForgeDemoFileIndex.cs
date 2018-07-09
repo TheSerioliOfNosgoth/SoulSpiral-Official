@@ -26,26 +26,8 @@ using BF = BenLincoln.TheLostWorlds.CDBigFile;
 
 namespace BenLincoln.TheLostWorlds.CDBigFile
 {
-    public class SoulReaver2AirForgeDemoFileIndex : BF.FileIndex
+    public class SoulReaver2AirForgeDemoFileIndex : BF.FileIndexWithCompressedFiles
     {
-        protected int mCompressedLengthPosition;
-
-        #region Properties
-
-        public int CompressedLengthPosition
-        {
-            get
-            {
-                return mCompressedLengthPosition;
-            }
-            set
-            {
-                mCompressedLengthPosition = value;
-            }
-        }
-
-        #endregion
-
         public SoulReaver2AirForgeDemoFileIndex(string name, BF.BigFile parentBigFile, BF.Index parentIndex, long offset)
             : base(name, parentBigFile, parentIndex, offset)
         {

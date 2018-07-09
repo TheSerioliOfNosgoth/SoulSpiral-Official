@@ -68,6 +68,10 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
         public const int FILE_TYPE_DRM_SR2_Room_RETAIL = 34;
         public const int FILE_TYPE_DRM_SR2_Room_DEMO_NTSC = 35;
         public const int FILE_TYPE_DRM_SR2_Room_DEMO_PAL = 36;
+        public const int FILE_TYPE_DDS = 37;
+        public const int FILE_TYPE_PlayStation_SEQ = 38;
+        public const int FILE_TYPE_VAG = 39;
+        public const int FILE_TYPE_VAB = 40;
 
         #region Properties
 
@@ -326,6 +330,22 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     ftVABH.Header = new byte[] { 0x56, 0x41, 0x47, 0x70 };
                     return ftVABH;
                     break;
+                case FILE_TYPE_VAG:
+                    FileTypeWithFixedHeader ftVAG = new FileTypeWithFixedHeader();
+                    ftVAG.Name = "VAG Audio File";
+                    ftVAG.Description = "A standard Playstation sound file";
+                    ftVAG.FileExtension = "vag";
+                    ftVAG.Header = new byte[] { 0x70, 0x47, 0x42, 0x56 };
+                    return ftVAG;
+                    break;
+                case FILE_TYPE_VAB:
+                    FileTypeWithFixedHeader ftVAB = new FileTypeWithFixedHeader();
+                    ftVAB.Name = "VAB Audio File";
+                    ftVAB.Description = "A standard Playstation sound library file";
+                    ftVAB.FileExtension = "vab";
+                    ftVAB.Header = new byte[] { 0x70, 0x42, 0x41, 0x56 };
+                    return ftVAB;
+                    break;
                 case FILE_TYPE_DRM_SR2:
                     FileTypeWithFixedHeader ftDRMSR2 = new FileTypeWithFixedHeader();
                     ftDRMSR2.Name = "DRM (Soul Reaver 2)";
@@ -414,6 +434,24 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                     ftDRMSR2Object.HeaderOffset = 0x1C;
                     ftDRMSR2Object.NamePointerOffset = 0x2C;
                     return ftDRMSR2Object;
+                    break;
+                case FILE_TYPE_DDS:
+                    FileTypeWithFixedHeader ftDirectDrawSurface = new FileTypeWithFixedHeader();
+                    ftDirectDrawSurface.Name = "DDS - Direct Draw Surface";
+                    ftDirectDrawSurface.Description = "A texture file";
+                    ftDirectDrawSurface.FileExtension = "dds";
+                    ftDirectDrawSurface.Header = new byte[] { 0x44, 0x44, 0x53, 0x20 };
+                    ftDirectDrawSurface.HeaderOffset = 0;
+                    return ftDirectDrawSurface;
+                    break;
+                case FILE_TYPE_PlayStation_SEQ:
+                    FileTypeWithFixedHeader ftPlayStationSEQ = new FileTypeWithFixedHeader();
+                    ftPlayStationSEQ.Name = "SEQ - PlayStation Audio Sequence File";
+                    ftPlayStationSEQ.Description = "An audio sequence";
+                    ftPlayStationSEQ.FileExtension = "seq";
+                    ftPlayStationSEQ.Header = new byte[] { 0x70, 0x51, 0x45, 0x53 };
+                    ftPlayStationSEQ.HeaderOffset = 0;
+                    return ftPlayStationSEQ;
                     break;
                 default:
                     return new FileType();

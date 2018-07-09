@@ -39,12 +39,13 @@ namespace SoulSpiral
             : base()
         {
             //mMinWidth = 700;
+            mMinWidth = 582;
             //SetIcon(UI.Dialogue.ICON_QUESTION);
             this.Text = "Select BigFile type";
 
             lblMessage.Text = "Please select the type of BigFile you are trying to open.";
             cbxTypes = new ComboBox();
-            cbxTypes.Width = 300;
+            cbxTypes.Width = 400;
             pnlText.Controls.Add(cbxTypes);
             cbxTypes.Location = new Point(8, cbxTypes.Location.Y);
 
@@ -69,21 +70,21 @@ namespace SoulSpiral
             // 
             // pnlButtons
             // 
-            this.pnlButtons.Location = new System.Drawing.Point(0, 41);
-            this.pnlButtons.Size = new System.Drawing.Size(624, 45);
+            this.pnlButtons.Location = new System.Drawing.Point(0, 37);
+            this.pnlButtons.Size = new System.Drawing.Size(344, 45);
             // 
             // pnlIcon
             // 
-            this.pnlIcon.Size = new System.Drawing.Size(88, 86);
+            this.pnlIcon.Size = new System.Drawing.Size(88, 82);
             // 
             // pnlText
             // 
-            this.pnlText.Size = new System.Drawing.Size(624, 86);
+            this.pnlText.Size = new System.Drawing.Size(344, 82);
             // 
             // frmSelectBigfileType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(712, 86);
+            this.ClientSize = new System.Drawing.Size(532, 82);
             this.Name = "frmSelectBigfileType";
             ((System.ComponentModel.ISupportInitialize)(this.imgIcon)).EndInit();
             this.pnlIcon.ResumeLayout(false);
@@ -94,11 +95,12 @@ namespace SoulSpiral
 
         }
 
-        public void SetDropDownOptions(BF.BigFileType[] options)
+        public void SetDropDownOptions(BF.BigFileTypeCollection options)
         {
-            for (int i = 0; i <= options.GetUpperBound(0); i++)
+            for (int i = 0; i < options.BigFileTypeNames.Length; i++)
             {
-                cbxTypes.Items.Add(options[i].Description);
+                BF.BigFileType bft = options.GetTypeByName(options.BigFileTypeNames[i]);
+                cbxTypes.Items.Add(bft.Description);
             }
             if (cbxTypes.Items.Count > 0)
             {

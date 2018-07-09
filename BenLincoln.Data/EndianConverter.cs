@@ -1,5 +1,5 @@
 // BenLincoln.Data
-// Copyright 2007-2012 Ben Lincoln
+// Copyright 2007-2018 Ben Lincoln
 // http://www.thelostworlds.net/
 //
 
@@ -33,7 +33,8 @@ namespace BenLincoln.Data
     public enum ByteSwapMode
     {
         UInt16,
-        UInt32
+        UInt32,
+        StraightReverse
     }
 
     public abstract class EndianConverter
@@ -85,6 +86,12 @@ namespace BenLincoln.Data
                         outBytes[i + 2] = bytes[i + 1];
                         outBytes[i + 3] = bytes[i];
                     }
+                    break;
+                case ByteSwapMode.StraightReverse:
+                    for (int i = 0; i < bytes.Length; i++)
+                    {
+                        outBytes[i] = bytes[(bytes.Length - 1) - i];
+                    }                   
                     break;
             }
 

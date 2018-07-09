@@ -40,7 +40,9 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
         protected long mOffset;
         //length in the bigfile (NOT uncompressed length for compressed files)
         protected int mLength;
-        protected uint mHashedName;
+        protected string mHashedName;
+        protected string mNamePrefix;
+        protected string mNameSuffix;
         protected BF.Index mParentIndex;
         protected BF.Directory mParentDirectory;
         protected BF.FileType mType;
@@ -150,7 +152,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             }
         }
 
-        public uint HashedName
+        public string HashedName
         {
             get
             {
@@ -159,6 +161,30 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             set
             {
                 mHashedName = value;
+            }
+        }
+
+        public string NamePrefix
+        {
+            get
+            {
+                return mNamePrefix;
+            }
+            set
+            {
+                mNamePrefix = value;
+            }
+        }
+
+        public string NameSuffix
+        {
+            get
+            {
+                return mNameSuffix;
+            }
+            set
+            {
+                mNameSuffix = value;
             }
         }
 
@@ -225,12 +251,20 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
 
         #endregion
 
+        protected File()
+        {
+
+        }
+
         public File(BF.BigFile parent, BF.Index parentIndex, uint[] rawIndexData, int hashNamePosition, int offsetPosition, int lengthPosition)
         {
+            mNamePrefix = "";
+            mNameSuffix = "";
             mParentBigFile = parent;
             mParentIndex = parentIndex;
             mRawIndexData = rawIndexData;
-            mHashedName = rawIndexData[hashNamePosition];
+            uint rawHash = rawIndexData[hashNamePosition];
+            mHashedName = BD.HexConverter.ByteArrayToHexString(BD.BinaryConverter.UIntToByteArray(rawHash));
             mOffset = rawIndexData[offsetPosition] * mParentIndex.OffsetMultiplier;
             mLength = (int)rawIndexData[lengthPosition];
             CheckFileDataForSanity();
@@ -247,13 +281,57 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             GetNameComponents();
         }
 
-        public File(BF.BigFile parent, BF.Index parentIndex, uint[] rawIndexData, uint hashedName, int offsetPosition, int lengthPosition)
+        public File(BF.BigFile parent, BF.Index parentIndex, uint[] rawIndexData, string hashedName, int offsetPosition, int lengthPosition)
         {
             mParentBigFile = parent;
             mParentIndex = parentIndex;
             mRawIndexData = rawIndexData;
             mHashedName = hashedName;
             mOffset = rawIndexData[offsetPosition] * mParentIndex.OffsetMultiplier;
+            mLength = (int)rawIndexData[lengthPosition];
+            CheckFileDataForSanity();
+            if (mIsValidReference)
+            {
+                GetHeaderData();
+                mType = GetFileType();
+                mCanBeReplaced = true;
+            }
+            else
+            {
+                mType = BF.FileType.FromType(BF.FileType.FILE_TYPE_Invalid);
+            }
+            GetNameComponents();
+        }
+
+        public File(BF.BigFile parent, BF.Index parentIndex, uint[] rawIndexData, int hashNamePosition, int originPosition, int offsetPosition, int lengthPosition)
+        {
+            mParentBigFile = parent;
+            mParentIndex = parentIndex;
+            mRawIndexData = rawIndexData;
+            mHashedName = BD.HexConverter.ByteArrayToHexString(BD.BinaryConverter.UIntToByteArray(rawIndexData[hashNamePosition]));
+            mOffset = originPosition + (rawIndexData[offsetPosition] * mParentIndex.OffsetMultiplier);
+            mLength = (int)rawIndexData[lengthPosition];
+            CheckFileDataForSanity();
+            if (mIsValidReference)
+            {
+                GetHeaderData();
+                mType = GetFileType();
+                mCanBeReplaced = true;
+            }
+            else
+            {
+                mType = BF.FileType.FromType(BF.FileType.FILE_TYPE_Invalid);
+            }
+            GetNameComponents();
+        }
+
+        public File(BF.BigFile parent, BF.Index parentIndex, uint[] rawIndexData, string hashedName, int originPosition, int offsetPosition, int lengthPosition)
+        {
+            mParentBigFile = parent;
+            mParentIndex = parentIndex;
+            mRawIndexData = rawIndexData;
+            mHashedName = hashedName;
+            mOffset = originPosition + (rawIndexData[offsetPosition] * mParentIndex.OffsetMultiplier);
             mLength = (int)rawIndexData[lengthPosition];
             CheckFileDataForSanity();
             if (mIsValidReference)
@@ -323,7 +401,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             iStream.Close();
         }
 
-        protected void GetNameComponents()
+        protected virtual void GetNameComponents()
         {
             string name = "";
             string path = "";
@@ -375,27 +453,38 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
         protected virtual string GetFileName()
         {
             string name = "";
-            if (!mIsValidReference)
-            {
-                name = "Invalid-" + string.Format("{0:X8}", mHashedName);
-                return name.Trim();
-            }
+            //if (!mIsValidReference)
+            //{
+            //    name = "Invalid-" + string.Format("{0:X8}", mHashedName);
+            //    return name.Trim();
+            //}
             //check the bigfile for a hash table first
             if (mParentBigFile.HashLookupTable != null)
             {
                 name = mParentBigFile.HashLookupTable.LookupHash(mHashedName);
             }
 
-            //if the file type supports it, read the internal file name
-            if ((name == "") || (name == null))
+            //if the file type supports it, and the option is enabled read the internal file name
+            if (mParentBigFile.ParseNamesFromKnownFileTypes)
             {
-                name = mType.GetInternalName(this);
+                if ((name == "") || (name == null))
+                {
+                    name = mType.GetInternalName(this);
+                }
             }
 
             //if the name is still unknown, name it after the hash
             if ((name == "") || (name == null))
             {
                 name = string.Format("{0:X8}", mHashedName);
+            }
+
+            name = string.Format("{0}{1}{2}", NamePrefix, name, NameSuffix);
+
+            if (!mIsValidReference)
+            {
+                name = string.Format("{0}.invalid_bigfile_reference", name);
+                return name.Trim();
             }
 
             return name.Trim();

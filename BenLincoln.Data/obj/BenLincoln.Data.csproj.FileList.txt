@@ -1,0 +1,10 @@
+obj\Release\ResolveAssemblyReference.cache
+bin\Release\BenLincoln.Data.dll
+bin\Release\BenLincoln.Data.pdb
+obj\Release\BenLincoln.Data.dll
+obj\Release\BenLincoln.Data.pdb
+bin\Debug\BenLincoln.Data.dll
+bin\Debug\BenLincoln.Data.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\BenLincoln.Data.dll
+obj\Debug\BenLincoln.Data.pdb

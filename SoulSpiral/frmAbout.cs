@@ -1,5 +1,5 @@
 // Soul Spiral
-// Copyright 2006-2012 Ben Lincoln
+// Copyright 2006-2018 Ben Lincoln
 // http://www.thelostworlds.net/
 //
 
@@ -34,6 +34,7 @@ namespace SoulSpiral
         protected int mVerMaj;
         protected int mVerMin;
         protected int mBuild;
+        //protected const string mVerComment = " (Preview)";
         protected const string mVerComment = "";
 
         public frmAbout()

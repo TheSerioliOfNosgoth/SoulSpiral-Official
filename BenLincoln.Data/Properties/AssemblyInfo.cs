@@ -1,6 +1,6 @@
 ﻿// BenLincoln.Data
-// Copyright 2007-2012 Ben Lincoln
-// http://www.thelostworlds.net/
+// Copyright 2007-2018 Ben Lincoln
+// https://www.thelostworlds.net/
 //
 
 // This file is part of BenLincoln.Data.
@@ -30,7 +30,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BenLincoln.Data")]
-[assembly: AssemblyCopyright("Copyright © 2007-2012 Ben Lincoln")]
+[assembly: AssemblyCopyright("Copyright © 2007-2018 Ben Lincoln")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,5 +51,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("1.1.*")]
-[assembly: AssemblyFileVersion("1.1.*")]
+[assembly: AssemblyVersion("1.3.*")]
+[assembly: AssemblyFileVersion("1.3.*")]

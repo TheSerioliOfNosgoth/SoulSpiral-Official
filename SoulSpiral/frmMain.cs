@@ -43,6 +43,7 @@ namespace SoulSpiral
         protected bool mHashLookupFileIsPresent;
 
         protected BF.BigFile.DirectoryModes mDirectoryMode;
+        protected bool mParseNamesFromKnownFileTypes;
 
         UI.ProgressWindow progressWindow;
         DirectoryExporter mExporter;
@@ -54,6 +55,9 @@ namespace SoulSpiral
             //these options will be replaced by registry key reads
             mnuDirectoryNames.Checked = true;
             mDirectoryMode = BigFile.DirectoryModes.Normal;
+            mnuParseNames.Checked = true;
+            mParseNamesFromKnownFileTypes = true;
+            mnuAlwaysUseHash.Checked = false;
  
             //figure out if there is an ohrainBOWS file to work with
             BF.Fingerprint test = new BF.Fingerprint();
@@ -223,10 +227,11 @@ namespace SoulSpiral
             openFile = new OpenFileDialog();
             openFile.CheckFileExists = true;
             openFile.CheckPathExists = true;
-            openFile.Title = "Select a Crystal Dynamics Bigfile to open...";
+            openFile.Title = "Select a Crystal Dynamics game data file to open...";
             //openFile.FileName = "bigfile.dat";
             openFile.DefaultExt = "*.*";
-            openFile.Filter = "Crystal Dynamics Bigfiles (*.DAT; *.BIG)|*.DAT;*.BIG";
+            //openFile.Filter = "Crystal Dynamics game data files (*.BIG, *.BG2, *.BGX, *.DAT, *.MP2, *.MXB, *.PKG, *.RKV)|*.BIG;*.BG2;*.BGX;*.DAT;*.MP2;*.MXB;*.PKG;*.RKVT|All files (*.*)|*.*";
+            openFile.Filter = "Crystal Dynamics game data files (*.BGX, *.BIG, *.DAT)|*.BGX;*.BIG;*.DAT|All files (*.*)|*.*";
             result = openFile.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -239,6 +244,7 @@ namespace SoulSpiral
         {
             mBigFile = new BF.BigFile(fileName);
             mBigFile.DirectoryMode = mDirectoryMode;
+            mBigFile.ParseNamesFromKnownFileTypes = mParseNamesFromKnownFileTypes;
             Thread bfrThread = new Thread(new ThreadStart(ReadBigFile));
             bfrThread.Start();
         }
@@ -248,24 +254,26 @@ namespace SoulSpiral
             Invoke(new MethodInvoker(DisableAllControls));
             bool useAutoResults = false;
             int typeIndex = 0;
+            string BigFileTypeName = "";
             string typeMessage = "Soul Spiral was unable to automatically determine this file's type.\r\n" + 
                 "Please select the type of BigFile you are opening.";
-            if (mBigFile.Fingerprint.FileSize != 0)
+            if (mBigFile.Fingerprint.Type.MasterIndexType != 0)
             {
                 frmRecognizedBigfile recognized = new frmRecognizedBigfile();
                 recognized.SetMessage(
                     "Soul Spiral recognizes this file as '" +
-                    mBigFile.Fingerprint.Name +
+                    mBigFile.Fingerprint.GetDisplayName() +
                     ".'\r\n" + 
                     "Do you want to use the automatic settings associated with that type?"
                     );
                 typeMessage = "You have chosen to override the automatic settings for this file type.\r\n" + 
                     "Please select the type of BigFile you are opening.";
-                for (int i = 0; i <= mBigFile.BigFileTypes.GetUpperBound(0); i++)
+                for (int i = 0; i < mBigFile.BigFileTypes.BigFileTypeNames.Length; i++)
                 {
-                    if (mBigFile.Fingerprint.Type == mBigFile.BigFileTypes[i])
+                    if (mBigFile.Fingerprint.Type == mBigFile.BigFileTypes.BigFileTypeHash[mBigFile.BigFileTypes.BigFileTypeNames[i]])
                     {
                         typeIndex = i;
+                        BigFileTypeName = mBigFile.BigFileTypes.BigFileTypeNames[i];
                     }
                 }
                 recognized.IconImage = SoulSpiral.Properties.Resources.Fingerprint;
@@ -303,7 +311,8 @@ namespace SoulSpiral
                         return;
                         break;
                     case UI.DialogueResult.YES:
-                        mBigFile.SetType(mBigFile.BigFileTypes[selectType.SelectedItem]);
+                        string typeName = mBigFile.BigFileTypes.BigFileTypeNames[selectType.SelectedItem];
+                        mBigFile.SetType(mBigFile.BigFileTypes.GetTypeByName(typeName));
                         break;
                 }
             }
@@ -338,14 +347,14 @@ namespace SoulSpiral
                 //noHashRowsDialogue.SetTitle("No Rainbows");
                 //noHashRowsDialogue.SetMessage(
                 //    "Soul Spiral can perform reverse hash lookups for the file names in this BigFile,\r\n" + 
-                //    "but the database does not contain the necessary information.\r\n" + 
-                //    "You are probably using an outdated version of 'ohrainBOWS.mdb.'");
+                //    "but the appropriate hash list can not be found.\r\n" + 
+                //    "You are probably missing a 'Hashes-*.txt' file.");
                 //noHashRowsDialogue.SetIcon(UI.Dialogue.ICON_X);
                 //noHashRowsDialogue.ShowDialog();
-                MessageBox.Show("Soul Spiral can perform reverse hash lookups for the file names in this BigFile,\r\n" +
-                    "but the database does not contain the necessary information.\r\n" + 
-                    "You are probably using an outdated version of 'ohrainBOWS.mdb.'",
-                    "No Rainbows",
+                MessageBox.Show("Soul Spiral can perform reverse hash lookups for the file names in this BigFile, " +
+                    "but the appropriate hash list can not be found.\r\n" + 
+                    "You are probably missing a 'Hashes-*.txt' file.",
+                    "No hash list",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
             }
@@ -473,6 +482,20 @@ namespace SoulSpiral
             {
                 PromptUserToReload();
             }
+        }
+
+        private void mnuParseNames_Click(object sender, EventArgs e)
+        {
+            mnuParseNames.Checked = true;
+            mParseNamesFromKnownFileTypes = true;
+            mnuAlwaysUseHash.Checked = false;
+        }
+
+        private void mnuAlwaysUseHash_Click(object sender, EventArgs e)
+        {
+            mnuParseNames.Checked = false;
+            mParseNamesFromKnownFileTypes = false;
+            mnuAlwaysUseHash.Checked = true;
         }
 
         protected void PromptUserToReload()
@@ -900,11 +923,12 @@ namespace SoulSpiral
                 oWriter.WriteLine("Filename Hashes");
                 oWriter.WriteLine("Entry Number,Hex,Dec");
                 int hashNum = 0;
-                foreach (uint currentHash in hashIndex.Hashes)
+                foreach (string currentHash in hashIndex.Hashes)
                 {
                     string info = hashNum.ToString() + ",";
-                    info += string.Format("{0:X8},", currentHash);
-                    info += string.Format("{0:000000000000}", currentHash);
+                    //info += string.Format("{0:X8},", currentHash);
+                    //info += string.Format("{0:000000000000}", currentHash);
+                    info += currentHash;
                     oWriter.WriteLine(info);
                     hashNum++;
                 }
@@ -1066,6 +1090,8 @@ namespace SoulSpiral
         }
 
         #endregion
+
+
 
     }
 }
