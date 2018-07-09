@@ -12,11 +12,12 @@
     <AssemblyName>SoulSpiral</AssemblyName>
     <ApplicationIcon>
     </ApplicationIcon>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -86,7 +87,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs" />
     <EmbeddedResource Include="frmAbout.resx">
       <SubType>Designer</SubType>
       <DependentUpon>frmAbout.cs</DependentUpon>
@@ -117,6 +117,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -128,65 +129,73 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Button-Export-Disabled.PNG" />
+    <None Include="Resources\Button-Export-Enabled.PNG" />
+    <None Include="Resources\Button-Export-Hover.PNG" />
+    <None Include="Resources\Button-ExportAll-Disabled.PNG" />
+    <None Include="Resources\Button-ExportAll-Enabled.PNG" />
+    <None Include="Resources\Button-ExportAll-Hover.PNG" />
+    <None Include="Resources\Button-HexEdit-Disabled.PNG" />
+    <None Include="Resources\Button-HexEdit-Enabled.PNG" />
+    <None Include="Resources\Button-HexEdit-Hover.PNG" />
+    <None Include="Resources\Button-Open-Enabled.PNG" />
+    <None Include="Resources\Button-Open-Hover.PNG" />
+    <None Include="Resources\Button-Replace-Disabled.PNG" />
+    <None Include="Resources\Button-Replace-Enabled.PNG" />
+    <None Include="Resources\Button-Replace-Hover.PNG" />
+    <None Include="Resources\Compose-Disabled.PNG" />
+    <None Include="Resources\Compose-Enabled.PNG" />
+    <None Include="Resources\Compose-Hover.PNG" />
+    <None Include="Resources\Decompose-Disabled.PNG" />
+    <None Include="Resources\Decompose-Enabled.PNG" />
+    <None Include="Resources\Decompose-Hover.PNG" />
+    <None Include="Resources\DialogueIcons-Small-Question.PNG" />
+    <None Include="Resources\Fingerprint.PNG" />
+    <None Include="Resources\Hashes-BO1.txt" />
+    <None Include="Resources\Hashes-Defiance.txt" />
+    <None Include="Resources\Hashes-SR1.txt" />
+    <None Include="Resources\Hashes-SR2.txt" />
+    <None Include="Resources\Hashes-SR2_Air_Forge.txt" />
+    <None Include="Resources\Question.PNG" />
+    <None Include="Resources\SoulSpiral-Crop.JPG" />
+    <None Include="Resources\SoulSpiral-Icon3.ICO" />
+    <None Include="Resources\Uranus Symbol - First Render-Front.ICO" />
+    <None Include="Resources\Uranus Symbol - Icon.ICO" />
+    <None Include="Resources\Uranus.ICO" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\AndrewFradley.HexPanel\AndrewFradley.HexPanel.csproj">
-      <Project>{0D025C9E-6F0B-4E58-B9FB-3DC96AE55B0E}</Project>
+      <Project>{0d025c9e-6f0b-4e58-b9fb-3dc96ae55b0e}</Project>
       <Name>AndrewFradley.HexPanel</Name>
     </ProjectReference>
     <ProjectReference Include="..\BenLincoln.TheLostWorlds.CDBigFile\BenLincoln.TheLostWorlds.CDBigFile.csproj">
-      <Project>{C7073F93-7262-49A6-8F14-022B0D38BF3F}</Project>
+      <Project>{c7073f93-7262-49a6-8f14-022b0d38bf3f}</Project>
       <Name>BenLincoln.TheLostWorlds.CDBigFile</Name>
     </ProjectReference>
     <ProjectReference Include="..\BenLincoln.UI\BenLincoln.UI.csproj">
-      <Project>{22FECB7D-A160-47D4-A7BE-B184BBF8C8D9}</Project>
+      <Project>{22fecb7d-a160-47d4-a7be-b184bbf8c8d9}</Project>
       <Name>BenLincoln.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Button-Export-Disabled.PNG" />
-    <Content Include="Resources\Button-Export-Enabled.PNG" />
-    <Content Include="Resources\Button-Export-Hover.PNG" />
-    <Content Include="Resources\Button-ExportAll-Disabled.PNG" />
-    <Content Include="Resources\Button-ExportAll-Enabled.PNG" />
-    <Content Include="Resources\Button-ExportAll-Hover.PNG" />
-    <Content Include="Resources\Button-HexEdit-Disabled.PNG" />
-    <Content Include="Resources\Button-HexEdit-Enabled.PNG" />
-    <Content Include="Resources\Button-HexEdit-Hover.PNG" />
-    <Content Include="Resources\Button-Open-Enabled.PNG" />
-    <Content Include="Resources\Button-Open-Hover.PNG" />
-    <Content Include="Resources\Button-Replace-Disabled.PNG" />
-    <Content Include="Resources\Button-Replace-Enabled.PNG" />
-    <Content Include="Resources\Button-Replace-Hover.PNG" />
-    <Content Include="Resources\Compose-Disabled.PNG" />
-    <Content Include="Resources\Compose-Enabled.PNG" />
-    <Content Include="Resources\Compose-Hover.PNG" />
-    <Content Include="Resources\Decompose-Disabled.PNG" />
-    <Content Include="Resources\Decompose-Enabled.PNG" />
-    <Content Include="Resources\Decompose-Hover.PNG" />
-    <Content Include="Resources\DialogueIcons-Small-Question.PNG" />
-    <Content Include="Resources\Fingerprint.PNG" />
-    <Content Include="Resources\Hashes-BO1.txt" />
-    <Content Include="Resources\Hashes-Defiance.txt" />
-    <Content Include="Resources\Hashes-SR1.txt" />
-    <Content Include="Resources\Hashes-SR2.txt" />
-    <Content Include="Resources\Hashes-SR2_Air_Forge.txt" />
-    <Content Include="Resources\Question.PNG" />
-    <Content Include="Resources\SoulSpiral-Crop.JPG" />
-    <Content Include="Resources\SoulSpiral-Icon3.ICO" />
-    <Content Include="Resources\Uranus Symbol - First Render-Front.ICO" />
-    <Content Include="Resources\Uranus Symbol - Icon.ICO" />
-    <Content Include="Resources\Uranus.ICO" />
+    <Content Include="Resources\Fingerprints.txt" />
+    <Content Include="Resources\Hashes-Akuji.txt" />
+    <Content Include="Resources\Hashes-DisneyRacing.txt" />
+    <Content Include="Resources\Hashes-Gex2.txt" />
+    <Content Include="Resources\Hashes-Gex3.txt" />
+    <Content Include="Resources\Hashes-SR1_Proto1.txt" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
+      <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)Resources\Hashes-*.txt" "$(TargetDir)" /d /y
+xcopy "$(ProjectDir)Resources\Fingerprints.txt" "$(TargetDir)" /d /y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
