@@ -489,6 +489,10 @@ namespace SoulSpiral
             mnuParseNames.Checked = true;
             mParseNamesFromKnownFileTypes = true;
             mnuAlwaysUseHash.Checked = false;
+            if ((mBigFile != null) && (mBigFile.MasterDirectory != null))
+            {
+                PromptUserToReload();
+            }
         }
 
         private void mnuAlwaysUseHash_Click(object sender, EventArgs e)
@@ -496,6 +500,10 @@ namespace SoulSpiral
             mnuParseNames.Checked = false;
             mParseNamesFromKnownFileTypes = false;
             mnuAlwaysUseHash.Checked = true;
+            if ((mBigFile != null) && (mBigFile.MasterDirectory != null))
+            {
+                PromptUserToReload();
+            }
         }
 
         protected void PromptUserToReload()

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 using BF = BenLincoln.TheLostWorlds.CDBigFile;
@@ -14,6 +15,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             Name = "SoulReaverDreamcast";
             Description = "Soul Reaver (Dreamcast)";
             MasterIndexType = IndexType.SR1PC;
+            HashLookupTable = HashLookupTable = new FlatFileHashLookupTable("SR1", Path.Combine(mDLLPath, "Hashes-SR1-DC.txt"));
             FileTypes = new FileType[]
             {
                 BF.FileType.FromType(BF.FileType.FILE_TYPE_DRM_SR1_Object),

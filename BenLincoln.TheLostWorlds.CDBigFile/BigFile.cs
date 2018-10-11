@@ -292,7 +292,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
 
             for (int i = 0; i < mFingerprints.GetUpperBound(0); i++)
             {
-                if ((!foundMatch) && (mFingerprints[i].CheckBigFileForMatch(this, false)))
+                if ((!foundMatch) && (mFingerprints[i].CheckBigFileForMatch(this, true)))
                 {
                     Fingerprint = mFingerprints[i];
                     foundMatch = true;

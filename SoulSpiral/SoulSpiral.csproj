@@ -150,11 +150,11 @@
     <None Include="Resources\Decompose-Hover.PNG" />
     <None Include="Resources\DialogueIcons-Small-Question.PNG" />
     <None Include="Resources\Fingerprint.PNG" />
-    <None Include="Resources\Hashes-BO1.txt" />
-    <None Include="Resources\Hashes-Defiance.txt" />
-    <None Include="Resources\Hashes-SR1.txt" />
-    <None Include="Resources\Hashes-SR2.txt" />
-    <None Include="Resources\Hashes-SR2_Air_Forge.txt" />
+    <Content Include="Resources\Hashes-BO1.txt" />
+    <Content Include="Resources\Hashes-Defiance.txt" />
+    <Content Include="Resources\Hashes-SR1.txt" />
+    <Content Include="Resources\Hashes-SR2.txt" />
+    <Content Include="Resources\Hashes-SR2_Air_Forge.txt" />
     <None Include="Resources\Question.PNG" />
     <None Include="Resources\SoulSpiral-Crop.JPG" />
     <None Include="Resources\SoulSpiral-Icon3.ICO" />
@@ -162,9 +162,19 @@
     <None Include="Resources\Uranus Symbol - Icon.ICO" />
     <None Include="Resources\Uranus.ICO" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Fingerprints.txt" />
+    <Content Include="Resources\Hashes-Akuji.txt" />
+    <Content Include="Resources\Hashes-DisneyRacing.txt" />
+    <Content Include="Resources\Hashes-Gex2.txt" />
+    <Content Include="Resources\Hashes-Gex3.txt" />
+    <Content Include="Resources\Hashes-SR1-DC.txt" />
+    <Content Include="Resources\Hashes-SR1_Proto1.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /d /y "$(ProjectDir)Resources\Hashes-*.txt" "$(TargetDir)"</PostBuildEvent>
+    <PostBuildEvent>xcopy /d /y "$(ProjectDir)Resources\Hashes-*.txt" "$(TargetDir)"
+xcopy /d /y "$(ProjectDir)Resources\Fingerprints.txt" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
