@@ -5,8 +5,8 @@ C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\bin\Release\AndrewFr
 C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\bin\Release\BenLincoln.TheLostWorlds.CDBigFile.dll
 C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\bin\Release\BenLincoln.UI.dll
 C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\bin\Release\BenLincoln.Data.dll
-C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\bin\Release\AndrewFradley.HexPanel.pdb
 C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\bin\Release\BenLincoln.TheLostWorlds.CDBigFile.pdb
+C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\bin\Release\AndrewFradley.HexPanel.pdb
 C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\bin\Release\BenLincoln.UI.pdb
 C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\bin\Release\BenLincoln.Data.pdb
 C:\Users\Andrew\source\repos\SoulSpiral-Official\SoulSpiral\obj\Release\SoulSpiral.csprojResolveAssemblyReference.cache

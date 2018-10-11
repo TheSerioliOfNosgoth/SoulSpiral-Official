@@ -491,8 +491,7 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                 }
             }
 
-            int numFingerprints = contentLineCount + 1;
-            mFingerprints = new BF.Fingerprint[numFingerprints];
+            ArrayList fingerprintList = new ArrayList();
 
             int fingerprintNum = 0;
             foreach (string fpl in fingerprintLines)
@@ -541,30 +540,39 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
                 }
                 if (isValid)
                 {
-                    mFingerprints[fingerprintNum] = new BF.Fingerprint();
-                    mFingerprints[fingerprintNum].Title = fpTitle;
-                    mFingerprints[fingerprintNum].Platform = fpPlatform;
-                    mFingerprints[fingerprintNum].Format = fpFormat;
-                    mFingerprints[fingerprintNum].Language = fpLanguage;
-                    mFingerprints[fingerprintNum].ReleaseID = fpReleaseID;
-                    mFingerprints[fingerprintNum].ReleaseType = fpReleaseType;
-                    mFingerprints[fingerprintNum].FileName = fpFileName;
-                    mFingerprints[fingerprintNum].BuildDate = fpBuildDate;
-                    mFingerprints[fingerprintNum].FileSize = fpFileSize;
+                    BF.Fingerprint newFingerprint = new BF.Fingerprint();
                     if (BigFileTypes.BigFileTypeHash.ContainsKey(fpBigFileTypeString))
                     {
-                        mFingerprints[fingerprintNum].Type = (BigFileType)BigFileTypes.BigFileTypeHash[fpBigFileTypeString];
+                        newFingerprint.Type = (BigFileType)BigFileTypes.BigFileTypeHash[fpBigFileTypeString];
                     }
-                    if (fpSHA256Hash.Trim() != "")
+                    else
                     {
-                        mFingerprints[fingerprintNum].SHA256Hash = BLD.HexConverter.HexStringToBytes(fpSHA256Hash);
+                        isValid = false;
                     }
+                    if (isValid)
+                    {
+                        newFingerprint.Title = fpTitle;
+                        newFingerprint.Platform = fpPlatform;
+                        newFingerprint.Format = fpFormat;
+                        newFingerprint.Language = fpLanguage;
+                        newFingerprint.ReleaseID = fpReleaseID;
+                        newFingerprint.ReleaseType = fpReleaseType;
+                        newFingerprint.FileName = fpFileName;
+                        newFingerprint.BuildDate = fpBuildDate;
+                        newFingerprint.FileSize = fpFileSize;
+                        if (fpSHA256Hash.Trim() != "")
+                        {
+                            newFingerprint.SHA256Hash = BLD.HexConverter.HexStringToBytes(fpSHA256Hash);
+                        }
+                        fingerprintList.Add(newFingerprint);
 
-                    fingerprintNum++;
+                        fingerprintNum++;
+                    }
                 }
             }
 
-            mFingerprints[contentLineCount] = new Fingerprint();
+            BF.Fingerprint dummy = new BF.Fingerprint();
+            mFingerprints = (BF.Fingerprint[])fingerprintList.ToArray(dummy.GetType());
 
             //mFingerprints = new BF.Fingerprint[]
             //{
@@ -580,6 +588,8 @@ namespace BenLincoln.TheLostWorlds.CDBigFile
             //    fpBloodOmen2PC,
             //    fpUnknown
             //};
+
+            int d2 = 7;
         }
 
         #endregion

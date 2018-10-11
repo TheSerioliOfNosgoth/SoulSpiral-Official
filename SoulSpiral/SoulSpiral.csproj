@@ -18,21 +18,6 @@
     <OldToolsVersion>2.0</OldToolsVersion>
     <UpgradeBackupLocation />
     <TargetFrameworkProfile />
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -129,6 +114,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BenLincoln.TheLostWorlds.CDBigFile\BenLincoln.TheLostWorlds.CDBigFile.csproj">
+      <Project>{C7073F93-7262-49A6-8F14-022B0D38BF3F}</Project>
+      <Name>BenLincoln.TheLostWorlds.CDBigFile</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AndrewFradley.HexPanel\AndrewFradley.HexPanel.csproj">
+      <Project>{0D025C9E-6F0B-4E58-B9FB-3DC96AE55B0E}</Project>
+      <Name>AndrewFradley.HexPanel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BenLincoln.UI\BenLincoln.UI.csproj">
+      <Project>{22FECB7D-A160-47D4-A7BE-B184BBF8C8D9}</Project>
+      <Name>BenLincoln.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Button-Export-Disabled.PNG" />
     <None Include="Resources\Button-Export-Enabled.PNG" />
     <None Include="Resources\Button-Export-Hover.PNG" />
@@ -163,39 +162,9 @@
     <None Include="Resources\Uranus Symbol - Icon.ICO" />
     <None Include="Resources\Uranus.ICO" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AndrewFradley.HexPanel\AndrewFradley.HexPanel.csproj">
-      <Project>{0d025c9e-6f0b-4e58-b9fb-3dc96ae55b0e}</Project>
-      <Name>AndrewFradley.HexPanel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BenLincoln.TheLostWorlds.CDBigFile\BenLincoln.TheLostWorlds.CDBigFile.csproj">
-      <Project>{c7073f93-7262-49a6-8f14-022b0d38bf3f}</Project>
-      <Name>BenLincoln.TheLostWorlds.CDBigFile</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BenLincoln.UI\BenLincoln.UI.csproj">
-      <Project>{22fecb7d-a160-47d4-a7be-b184bbf8c8d9}</Project>
-      <Name>BenLincoln.UI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\Fingerprints.txt" />
-    <Content Include="Resources\Hashes-Akuji.txt" />
-    <Content Include="Resources\Hashes-DisneyRacing.txt" />
-    <Content Include="Resources\Hashes-Gex2.txt" />
-    <Content Include="Resources\Hashes-Gex3.txt" />
-    <Content Include="Resources\Hashes-SR1_Proto1.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)Resources\Hashes-*.txt" "$(TargetDir)" /d /y
-xcopy "$(ProjectDir)Resources\Fingerprints.txt" "$(TargetDir)" /d /y</PostBuildEvent>
+    <PostBuildEvent>xcopy /d /y "$(ProjectDir)Resources\Hashes-*.txt" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

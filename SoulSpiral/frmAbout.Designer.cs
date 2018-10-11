@@ -57,12 +57,13 @@ namespace SoulSpiral
             this.imgLogo = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblJohnDoom1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(252, 307);
+            this.btnClose.Location = new System.Drawing.Point(252, 347);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(88, 23);
             this.btnClose.TabIndex = 17;
@@ -117,28 +118,39 @@ namespace SoulSpiral
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(20, 257);
+            this.label1.Location = new System.Drawing.Point(12, 262);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(560, 23);
+            this.label1.Size = new System.Drawing.Size(569, 23);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Hex Editor panel component and numerous other significant contributions by Andrew" +
-    " Fradley";
+            this.label1.Text = "Hex Editor panel component and numerous other contributions by Andrew Fradley (ht" +
+    "tps://github.com/afradley/)";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(20, 280);
+            this.label2.Location = new System.Drawing.Point(20, 318);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(560, 23);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Additional contributions by Eoghan Driver, Alexey Kragin, and thebigboss94ita";
+            this.label2.Text = "Additional contributions by Eoghan Driver, and Alexey Kragin";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblJohnDoom1
+            // 
+            this.lblJohnDoom1.Location = new System.Drawing.Point(12, 290);
+            this.lblJohnDoom1.Name = "lblJohnDoom1";
+            this.lblJohnDoom1.Size = new System.Drawing.Size(569, 23);
+            this.lblJohnDoom1.TabIndex = 20;
+            this.lblJohnDoom1.Text = "Blood Omen 2 support based on code by John Doom (http://veryitalianproject.alterv" +
+    "ista.org/downloads/tools.php)";
+            this.lblJohnDoom1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 334);
+            this.ClientSize = new System.Drawing.Size(593, 382);
+            this.Controls.Add(this.lblJohnDoom1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);
@@ -150,7 +162,7 @@ namespace SoulSpiral
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(601, 327);
+            this.MinimumSize = new System.Drawing.Size(609, 420);
             this.Name = "frmAbout";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -171,5 +183,6 @@ namespace SoulSpiral
         internal System.Windows.Forms.PictureBox imgLogo;
         internal System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.Label lblJohnDoom1;
     }
 }
