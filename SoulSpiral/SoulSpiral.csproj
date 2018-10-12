@@ -10,8 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SoulSpiral</RootNamespace>
     <AssemblyName>SoulSpiral</AssemblyName>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\SoulSpiral-Icon3.ICO</ApplicationIcon>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -157,10 +156,10 @@
     <Content Include="Resources\Hashes-SR2_Air_Forge.txt" />
     <None Include="Resources\Question.PNG" />
     <None Include="Resources\SoulSpiral-Crop.JPG" />
-    <None Include="Resources\SoulSpiral-Icon3.ICO" />
-    <None Include="Resources\Uranus Symbol - First Render-Front.ICO" />
-    <None Include="Resources\Uranus Symbol - Icon.ICO" />
-    <None Include="Resources\Uranus.ICO" />
+    <Content Include="Resources\SoulSpiral-Icon3.ICO" />
+    <Content Include="Resources\Uranus Symbol - First Render-Front.ICO" />
+    <Content Include="Resources\Uranus Symbol - Icon.ICO" />
+    <Content Include="Resources\Uranus.ICO" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Fingerprints.txt" />
